@@ -38,6 +38,10 @@ const sidebar = [
             {
                 title: '观察者模式'
             },
+            {
+                title:'父子组件创建流程',
+                path:'/vue/父子组件创建流程.md'
+            }
         ]
     },
     {
@@ -51,6 +55,24 @@ const sidebar = [
     },
     {
         title: '性能优化'
+    },
+    {
+        title: '脚手架'
+    },
+    {
+        title: '基建库'
+    },
+    {
+        title: '框架基座'
+    },
+    {
+        title: '算法题',
+        children: [
+            {
+                title: '字符串中最大连续数',
+                path: '/算法/字符串中最大连续数'
+            }
+        ]
     }
   
 ]
