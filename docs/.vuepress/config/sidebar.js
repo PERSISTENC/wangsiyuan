@@ -29,7 +29,12 @@ const sidebar = [
             {
                 title: 'JS中几种继承方式'
             },
-           
+            {
+                title: 'script 标签加载的三种模式'
+            },
+            {
+                title: '模块化'
+            }
         ]
     },
     {
@@ -41,17 +46,32 @@ const sidebar = [
             {
                 title:'父子组件创建流程',
                 path:'/vue/父子组件创建流程.md'
+            },
+            {
+                title: 'Vue2 Vue3是如何依赖收集的'
+            },
+            {
+                title: 'Vue和React的区别'
+            },
+            {
+                title: 'nexttick的背后的原理是什么'
             }
         ]
     },
     {
-        title: 'Vue3',
+        title: 'Webpack',
         children: [
-           
+            {
+                title: 'Loader'
+            },
+            {
+                title: 'Plugin'
+            },
+            {
+                title: '库模式和普通项目打包区别在哪里?',
+                path:'/webpack/库模式和普通项目打包区别.md'
+            }
         ]
-    },
-    {
-        title: 'Webpack'
     },
     {
         title: '性能优化'
@@ -60,7 +80,16 @@ const sidebar = [
         title: '脚手架'
     },
     {
-        title: '基建库'
+        title: '基建库',
+        children: [
+            {
+                title: '基建库的作用'
+            },
+            {
+                title: '库模式的打包方式',
+                path:'/webpack/库模式和普通项目打包区别.md'
+            }
+        ]
     },
     {
         title: '框架基座'
