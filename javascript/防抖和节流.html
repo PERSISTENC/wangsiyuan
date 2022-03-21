@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>防抖  ----debounce | 王思渊的 blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="每天进步一点点.......">
+    
+    <link rel="preload" href="/wangsiyuan/assets/css/0.styles.91a91bf4.css" as="style"><link rel="preload" href="/wangsiyuan/assets/js/app.d4699cc1.js" as="script"><link rel="preload" href="/wangsiyuan/assets/js/2.0bca4af4.js" as="script"><link rel="preload" href="/wangsiyuan/assets/js/11.826fd49c.js" as="script"><link rel="prefetch" href="/wangsiyuan/assets/js/10.adb6f6a1.js"><link rel="prefetch" href="/wangsiyuan/assets/js/12.0dbdcf15.js"><link rel="prefetch" href="/wangsiyuan/assets/js/13.dacf0cf2.js"><link rel="prefetch" href="/wangsiyuan/assets/js/14.85952013.js"><link rel="prefetch" href="/wangsiyuan/assets/js/3.b05f07ce.js"><link rel="prefetch" href="/wangsiyuan/assets/js/4.0a2f3beb.js"><link rel="prefetch" href="/wangsiyuan/assets/js/5.a33a2f42.js"><link rel="prefetch" href="/wangsiyuan/assets/js/6.f0091315.js"><link rel="prefetch" href="/wangsiyuan/assets/js/7.174b0665.js"><link rel="prefetch" href="/wangsiyuan/assets/js/8.edb3ff2d.js"><link rel="prefetch" href="/wangsiyuan/assets/js/9.eb944b50.js">
+    <link rel="stylesheet" href="/wangsiyuan/assets/css/0.styles.91a91bf4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/wangsiyuan/" class="home-link router-link-active"><!----> <span class="site-name">王思渊的 blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/wangsiyuan/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="关于作者" class="dropdown-title"><span class="title">关于作者</span> <span class="arrow down"></span></button> <button type="button" aria-label="关于作者" class="mobile-dropdown-title"><span class="title">关于作者</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PERSISTENC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/PERSISTENC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/wangsiyuan/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="关于作者" class="dropdown-title"><span class="title">关于作者</span> <span class="arrow down"></span></button> <button type="button" aria-label="关于作者" class="mobile-dropdown-title"><span class="title">关于作者</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PERSISTENC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/PERSISTENC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Javascript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/wangsiyuan/javascript/防抖和节流.html" class="active sidebar-link">防抖和节流?</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/防抖和节流.html#防抖-debounce" class="sidebar-link">防抖  ----debounce</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/防抖和节流.html#节流-throttle" class="sidebar-link">节流  ----throttle</a></li></ul></li><li><a href="/wangsiyuan/javascript/闭包.html" class="sidebar-link">闭包是什么?它的应用场景有哪些?</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/闭包.html#闭包是什么" class="sidebar-link">闭包是什么?</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/闭包.html#闭包的好处和危害" class="sidebar-link">闭包的好处和危害?</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/闭包.html#闭包的应用场景" class="sidebar-link">闭包的应用场景</a></li></ul></li><li><a href="/wangsiyuan/javascript/浏览器缓存.html" class="sidebar-link">浏览器的几种缓存方式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/浏览器缓存.html#浏览器缓存" class="sidebar-link">浏览器缓存</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/浏览器缓存.html#localstorage" class="sidebar-link">LocalStorage</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/浏览器缓存.html#sessionstorage" class="sidebar-link">SessionStorage</a></li><li class="sidebar-sub-header"><a href="/wangsiyuan/javascript/浏览器缓存.html#cookie" class="sidebar-link">Cookie</a></li></ul></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Promise 的特性、优缺点，内部是如何实现的，动手实现 Promise</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/wangsiyuan/javascript/回流和重绘.html" class="sidebar-link">回流和重绘</a><ul class="sidebar-sub-headers"></ul></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Es6常用的几种方法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>事件循环机制 event loop</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>JS中几种继承方式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>script 标签加载的三种模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>模块化</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>脚手架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>基建库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>框架基座</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法题</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="防抖-debounce"><a href="#防抖-debounce" class="header-anchor">#</a> 防抖  ----debounce</h2> <p>防抖是指在用户高频率操作以后，才会触发的回调函数</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+ * @desc 防抖
+ * @param func 函数
+ * @param wait 延迟执行毫秒数
+ * @param immediate true 表立即执行，false 表非立即执行
+ */
+function debounce(func, wait, immediate = false) {
+  let timeout;
+  return function () {
+    let context = this;
+    let args = arguments;
+
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      var callNow = !timeout;
+      timeout = setTimeout(() =&gt; {
+        timeout = null;
+      }, wait)
+      if (callNow) func.apply(context, args)
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args)
+      }, wait);
+    }
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h2 id="节流-throttle"><a href="#节流-throttle" class="header-anchor">#</a> 节流  ----throttle</h2> <p>节流是指 用户高频操作每隔一段时间触发一次</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+* @description 节流
+* @param {Object} func 节流回调函数
+* @param {Number} delay 节流间隔时间
+*/
+function throttle(func, delay) {
+    var prev = Date.now();
+    return function () {
+        var context = this;
+        var args = arguments;
+        var now = Date.now();
+        if (now - prev &gt;= delay) {
+            func.apply(context, args);
+            prev = Date.now();
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新:</span> <span class="time">3/9/2022, 2:18:03 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/wangsiyuan/javascript/闭包.html">
+        闭包是什么?它的应用场景有哪些?
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/wangsiyuan/assets/js/app.d4699cc1.js" defer></script><script src="/wangsiyuan/assets/js/2.0bca4af4.js" defer></script><script src="/wangsiyuan/assets/js/11.826fd49c.js" defer></script>
+  </body>
+</html>
