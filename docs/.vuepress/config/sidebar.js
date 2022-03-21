@@ -3,7 +3,7 @@
 const sidebar = [
     {
         title: 'Javascript',
-        collapsable: false, //false可以使侧边栏分组强制打开
+        // collapsable: false, //false可以使侧边栏分组强制打开
         children: [
             {
                 title: '防抖和节流?',
@@ -19,6 +19,10 @@ const sidebar = [
             },
             {
                 title: 'Promise 的特性、优缺点，内部是如何实现的，动手实现 Promise'
+            },
+            {
+                title:'回流和重绘',
+                path:'/javascript/回流和重绘.md'
             },
             {
                 title: 'Es6常用的几种方法'
