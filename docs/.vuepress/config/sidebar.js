@@ -3,7 +3,6 @@
 const sidebar = [
     {
         title: 'Javascript',
-        // collapsable: false, //false可以使侧边栏分组强制打开
         children: [
             {
                 title: '防抖和节流?',
