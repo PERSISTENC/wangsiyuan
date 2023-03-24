@@ -58,7 +58,11 @@ const sidebar = [
             },
             {
                 title: 'nexttick的背后的原理是什么'
-            }
+            },
+            {
+                title:'Vue3整体架构和设计思路',
+                path:'/vue/Vue3整体架构和设计思路.md'
+            },
         ]
     },
     {
