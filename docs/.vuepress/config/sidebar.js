@@ -109,7 +109,16 @@ const sidebar = [
                 path: '/算法/字符串中最大连续数'
             }
         ]
-    }
+    },
+    {
+        title: '工具对比',
+        children: [
+            {
+                title: 'Pinia和Vuex又啥区别',
+                path: '/工具对比/Pinia和Vuex又啥区别'
+            }
+        ]
+    },
   
 ]
 
